@@ -1,0 +1,51 @@
+<div *ngIf="prodotto" style="min-height: 900px;" class="mt-5">
+ <div class="container-lg h-100">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-sm-8 myColumnProduct">
+        <div class="card">
+          <div class="card-img-top text-center" ><img class="img-fluid myProdImgCard" src="{{ prodotto.link }}"></div>
+          <div class="card-footer text-info">{{prodotto.descrizione}}</div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              Visualizza descrizione dettagliata
+            </button>
+            <br>
+            <div class="container">
+               <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                   <div class="card">
+                     <div class="card-body">{{ prodotto.descrlunga }}</div>
+                   </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--- ---->
+      <div class="col-lg-6 col-sm-8 myColumnProduct "> <!--per cetrare d-xl-flex align-items-center -->
+          <div class="card" style="margin-top: 10px; padding-left: 3px;">
+            <div class="card-title myCardTitle"><h3>{{prodotto.nome}}</h3></div>
+            <div class="card-body">
+              <ul>
+                <li><h5>Prezzo : {{prodotto.prezzo | currency : 'EUR'}}</h5></li>
+                <li><h5>Origine : {{prodotto.origine}}</h5></li>
+                <li><h5>Valutazione : {{prodotto.valutazione}}</h5></li>
+                <li><h5>Stagione : {{prodotto.stagione}}</h5></li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <form [formGroup]="FormTaglie">
+                <h4>Scegli la tipo</h4>
+                <select class="browser-default custom-select" name="taglia" formControlName="taglia">
+                  <option *ngFor="let taglia of prodotto.taglie" [ngValue]="taglia">{{taglia}}</option>
+                </select>
+                <p *ngIf="FormTaglie.valid === false" class="text-danger text-center">
+                  <br> Devi selezionare la taglia/misura/colore
+                </p>
+                <button class="btn btn-primary btn-lg btn-block" id="sub-taglia" [disabled]="!FormTaglie.valid" [ngClass]="FormTaglie.valid? false: 'btn btn-danger btn-lg btn-block'" (click)="aggiungiCarrello(prodotto)" routerLink="">Ordina</button>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+ </div>
+</div>

@@ -1,0 +1,22 @@
+button{
+  margin-right: 5px;
+}
+ul{
+  list-style-type: none;
+}
+.myColumnProduct{
+  padding: 0px;
+}
+#sub-taglia{
+  margin-top: 5px;
+}
+.myCardTitle{
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.myProdImgCard{
+  max-width: 100%;
+  vertical-align: center;
+  vertical-align: central;
+}

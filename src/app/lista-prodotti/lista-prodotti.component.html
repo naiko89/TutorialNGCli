@@ -1,0 +1,26 @@
+<br>
+<div class="" *ngFor="let list of prodotti; index as ID">
+  <div class="bg-dark col-10 offset-1 rounded-top mt-1"><h5 class="mb-0 text-white p-2 text-right"></h5></div>
+  <div class="card-group bg-white col-10 offset-1 d-flex justify-content-center pt-4 pb-4 border-dark rounded-bottom" style="border-style: solid">
+        <div class="col-sm-10 col-md-6 col-4 col-lg-2 p-0" *ngFor="let prodotto of list; index as prodottoID">
+          <div class="card m-1" style="font-size: 12px;">
+              <img class="card-img-top img-fluid" src="{{prodotto.link}}" alt="Card image cap" style="min-height: 249px;">
+              <div class="card-body">
+                <h3 class="card-title" style="font-size: 15px; "><a [title]="prodotto.nome + ' dettagli'" [routerLink]="['/prodotti', prodottoID, ID]">{{prodotto.nome}}</a>  </h3> {{prodotto.prezzo | currency: 'EUR'}}
+                <p class="card-text" *ngIf="prodotto.descrizione">{{prodotto.descrizione}}</p>
+              </div>
+              <ul class="list-group list-group-flush" >
+                <li class="list-group-item" *ngIf="prodotto.taglie">
+                  <span class="badge bg-success text-lg-left" style="font-size: 10px;" *ngFor="let taglia of prodotto.taglie">{{taglia}}</span>
+                </li>
+                <li [ngClass]="prodotto.valutazione === 5 ? 'list-group-item list-group-item-primary' : 'list-group-item'">Rating : {{prodotto.valutazione}}</li>
+                <li class="list-group-item">Paese di Origine : {{prodotto.origine}}</li>
+              </ul>
+          </div>
+        </div>
+  </div>
+</div>
+
+
+
+

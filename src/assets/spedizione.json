@@ -1,0 +1,17 @@
+[
+  {
+    "tipologia": "Consegna prioritaria",
+    "prezzo": 18.99,
+    "tempo": "Un giorno lavorativo"
+  },
+  {
+    "tipologia": "Consegna corriere",
+    "prezzo": 9.99,
+    "tempo": "Tre giorni lavorativi"
+  },
+  {
+    "tipologia": "Consegna postale",
+    "prezzo": 3.99,
+    "tempo": "Sette giorni lavorativi"
+  }
+]

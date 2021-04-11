@@ -1,0 +1,7 @@
+.MyBg{
+  background-image: url("../assets/back_2.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-size: cover;
+}

@@ -1,0 +1,128 @@
+<div class="container" style="min-height: 900px;">
+  <div class="row justify-content-center">
+
+    <div class="col-lg-6 col-sm-7 myColumnProduct "> <!--per cetrare d-xl-flex align-items-center -->
+      <div class="card">
+        <div class="card-title"><h3 style="padding: 6px">Inserisci i dati per la spedizione</h3></div>
+        <div class="card-body">
+          <form [formGroup]="cassa" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label for="nome">Nome</label>
+                <input id="nome" class="form-control" type="text" formControlName="nome" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label for="cognome">Cognome</label>
+                <input id="cognome" class="form-control" type="text" formControlName="cognome" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label for="indirizzo">Indirizzo</label>
+                <input id="indirizzo" class="form-control" type="text" formControlName="indirizzo" required>
+              </div>
+            </div>
+
+            <p *ngIf="cassa.valid === false" class="text-danger">
+              <!-- Form Status: {{ cassa.status }} <br> Form Valid: {{ cassa.valid }} -->
+              Attenzione mancano dati personali
+            </p>
+            <p *ngIf="oggetti.length === 0" class="text-danger">
+              Attenzione che il carrello è vuoto
+            </p>
+
+            <button type="submit" [disabled]="!cassa.valid || oggetti.length === 0"
+                    [ngClass]="cassa.valid && oggetti.length > 0? false: 'btn btn-danger'" class="btn btn-success">Ordina
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="col-lg-6 col-sm-7 myColumnProduct">
+      <div class="card">
+        <div class="card-body">
+          <table *ngIf="oggetti.length > 0" class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Oggetto</th>
+              <th scope="col">Stagione</th>
+              <th scope="col">Origine</th>
+              <th scope="col">Taglia</th>
+              <th scope="col">Rimuovi</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let oggetto of oggetti; index as prodottoID">
+            <tr>
+              <td>{{ oggetto.nome }}</td>
+              <td>{{ oggetto.stagione }}</td>
+              <td>{{ oggetto.origine }}</td>
+              <td>{{ oggetto.taglOrd }}</td>
+              <td><button class="btn btn-danger" (click)="rimuoviOggetto( prodottoID )">X</button></td>
+            </tr>
+            </tbody>
+          </table>
+          <div *ngIf="oggetti.length === 0" style="text-align: center;" class="text-danger">
+            Carrello Vuoto
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
